@@ -9,6 +9,10 @@ description = "Eventbus crate with sync and async features"
 keywords = ["eventbus", "event", "async"]
 categories = ["asynchronous"]
 license = "MIT"
+include = [
+    "src/**/*.rs",
+    "Cargo.toml",
+]
 
 [lib]
 doctest = false
