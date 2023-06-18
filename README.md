@@ -10,7 +10,7 @@ Basu provides support for both asynchronous and synchronous event handling.
 ## Example
 
 ### Sync
-Make sure you disable `default-features` of the basu crate on Cargo.toml:
+Make sure you disable `default-features` of the basu crate on `Cargo.toml`:
 
 ```toml
 [dependencies]
