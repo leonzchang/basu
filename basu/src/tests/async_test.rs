@@ -1,4 +1,4 @@
-use crate::{error::BasuError, event::Event, EventBus, Handle};
+use crate::{async_trait, error::BasuError, event::Event, EventBus, Handle};
 
 #[derive(Debug)]
 struct Data {
@@ -8,7 +8,7 @@ struct Data {
 struct HandlerA;
 struct HandlerB;
 
-#[async_trait::async_trait]
+#[async_trait]
 impl Handle<Data> for HandlerA {
     async fn handle(&self, event: &Event<Data>) -> Result<(), BasuError> {
         let data = event.get_data();
@@ -18,7 +18,7 @@ impl Handle<Data> for HandlerA {
     }
 }
 
-#[async_trait::async_trait]
+#[async_trait]
 impl Handle<Data> for HandlerB {
     async fn handle(&self, event: &Event<Data>) -> Result<(), BasuError> {
         let data = event.get_data();
@@ -35,7 +35,7 @@ async fn test() {
     let eventbus = EventBus::new();
 
     let handler_a_id = eventbus.subscribe(ECHO, Box::new(HandlerA)).await;
-    println!("HandlerA id: {}", handler_a_id.id);
+    println!("HandlerA id: {:?}", handler_a_id);
 
     let event = Event::new(Data {
         message: "{data from event}".to_owned(),
@@ -49,7 +49,7 @@ async fn test() {
     assert_eq!(count, 1);
 
     let handler_b_id = eventbus.subscribe(ECHO, Box::new(HandlerB)).await;
-    println!("HandlerB id: {}", handler_b_id.id);
+    println!("HandlerB id: {:?}", handler_b_id);
 
     let count = eventbus.get_handler_count(ECHO).await.unwrap();
     assert_eq!(count, 2);

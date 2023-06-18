@@ -1,7 +1,9 @@
-use crate::{error::BasuError, event::Event, Arc, EventBus, Handler, HandlerId, HashMap, Mutex};
+use crate::{
+    async_trait, error::BasuError, event::Event, Arc, EventBus, Handler, HandlerId, HashMap, Mutex,
+};
 
 /// Implement for event handler
-#[async_trait::async_trait]
+#[async_trait]
 #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
 pub trait Handle<T>: Send + Sync {
     /// Handle event which is published from `EventBus`
@@ -21,6 +23,7 @@ impl<T> EventBus<T> {
     ///
     /// struct MyEventHandler;
     ///
+    /// #[async_trait]
     /// impl Handle<MyEventData> for MyEventHandler {
     ///     async fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
     ///         // Handle the event here
@@ -68,6 +71,7 @@ impl<T> EventBus<T> {
     ///
     /// struct MyEventHandler;
     ///
+    /// #[async_trait]
     /// impl Handle<MyEventData> for MyEventHandler {
     ///     async fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
     ///         // Handle the event here
@@ -112,8 +116,9 @@ impl<T> EventBus<T> {
     ///
     /// struct MyEventHandler;
     ///
+    /// #[async_trait]
     /// impl Handle<MyEventData> for MyEventHandler {
-    ///     fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
+    ///     async fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
     ///         // Handle the event here
     ///         // ...
     ///         Ok(())
@@ -155,8 +160,9 @@ impl<T> EventBus<T> {
     ///
     /// struct MyEventHandler;
     ///
+    /// #[async_trait]
     /// impl Handle<MyEventData> for MyEventHandler {
-    ///     fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
+    ///     async fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
     ///         // Handle the event here
     ///         // ...
     ///         Ok(())
@@ -216,8 +222,9 @@ impl<T> EventBus<T> {
     ///
     /// struct MyEventHandler;
     ///
+    /// #[async_trait]
     /// impl Handle<MyEventData> for MyEventHandler {
-    ///     fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
+    ///     async fn handle(&self, event: &Event<MyEventData>) -> Result<(), BasuError> {
     ///         // Handle the event here
     ///         // ...
     ///         Ok(())

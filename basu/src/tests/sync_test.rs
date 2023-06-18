@@ -33,7 +33,7 @@ fn test() {
     let eventbus = EventBus::new();
 
     let handler_a_id = eventbus.subscribe(ECHO, Box::new(HandlerA)).unwrap();
-    println!("HandlerA id: {}", handler_a_id.id);
+    println!("HandlerA id: {:?}", handler_a_id);
 
     let event = Event::new(Data {
         message: "{data from event}".to_owned(),
@@ -47,7 +47,7 @@ fn test() {
     assert_eq!(count, 1);
 
     let handler_b_id = eventbus.subscribe(ECHO, Box::new(HandlerB)).unwrap();
-    println!("HandlerB id: {}", handler_b_id.id);
+    println!("HandlerB id: {:?}", handler_b_id);
 
     let count = eventbus.get_handler_count(ECHO).unwrap();
     assert_eq!(count, 2);
