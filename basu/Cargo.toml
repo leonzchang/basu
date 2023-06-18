@@ -3,8 +3,8 @@ name = "basu"
 authors = ["Leonz Chang<bellerophon00530@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
-description = "A sync and asynchronous event bus crate"
-keywords = ["eventbus", "async", "library"]
+description = "Eventbus crate with sync and async features"
+keywords = ["eventbus", "event", "async"]
 categories = ["asynchronous"]
 license = "MIT"
 
