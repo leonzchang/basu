@@ -10,19 +10,19 @@ Basu provides support for both asynchronous and synchronous event handling.
 ## Example
 
 ### Sync
-Make sure you disable `default-features` of the basu crate on `Cargo.toml`:
+To use sync Basu, make sure you disable `default-features` of the basu crate on `Cargo.toml`:
 
 ```toml
 [dependencies]
-basu = { version = "0.1.0", default-features = false, features = ["sync"] }
+basu = { version = "0.1", default-features = false, features = ["sync"] }
 ```
 
 ### Async
-To use Basu in your Rust project, add the following line to your `Cargo.toml` file:
+To use async Basu in your Rust project, add the following line to `Cargo.toml`:
 
 ```toml
 [dependencies]
-basu = "0.1.0"
+basu = "0.1"
 ```
 
 ###  Usage:
