@@ -18,14 +18,14 @@
 //!
 //! ```toml
 //! [dependencies]
-//! basu = { version = "0.1.0", features = ["sync"] }
+//! basu = { version = "0.1.0", default-features = false, features = ["sync"] }
 //! ```
 //!
 //! To enable the asynchronous event handling capability, use the `async` feature:
 //!
 //! ```toml
 //! [dependencies]
-//! basu = { version = "0.1.0", features = ["async"] }
+//! basu = "0.1.0"
 //! ```
 #![deny(missing_docs)]
 

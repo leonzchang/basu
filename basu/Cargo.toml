@@ -20,6 +20,6 @@ thiserror = { workspace = true }
 uuid = { workspace = true }
 
 [features]
-default = []
+default = ["async"]
 sync = []
 async = ["futures", "tokio", "async-trait"]
