@@ -1,0 +1,25 @@
+[package]
+name = "basu"
+authors = ["Leonz Chang<bellerophon00530@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+description = "A sync and asynchronous event bus crate"
+keywords = ["eventbus", "async", "library"]
+categories = ["asynchronous"]
+license = "MIT"
+
+[lib]
+doctest = false
+
+[dependencies]
+anyhow = { workspace = true }
+async-trait = { workspace = true, optional = true }
+futures = { workspace = true, optional = true }
+tokio = { workspace = true, optional = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
+
+[features]
+default = []
+sync = []
+async = ["futures", "tokio", "async-trait"]

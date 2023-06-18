@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "basu"
+]
+
+
+[workspace.dependencies]
+anyhow = "1"
+async-trait = "0.1"
+futures = { version = "0.3" }
+tokio = { version = "1", default-features = false, features = ["rt", "sync", "macros"] }
+thiserror =  "1"
+uuid = { version = "1", features = ["serde", "v4", "fast-rng", "macro-diagnostics"] }
