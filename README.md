@@ -1,5 +1,7 @@
 # Basu
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/leonzchang/basu/blob/main/LICENSE)
+[![crates.io](https://img.shields.io/crates/v/basu)](
+https://crates.io/crates/basu)
 
 A flexible event bus crate enables decoupling between different components of an application through the event-driven pattern.
 
