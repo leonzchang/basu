@@ -69,6 +69,7 @@ pub type HandlerMap<T> = Arc<Mutex<HashMap<HandlerId, Handler<T>>>>;
 pub type EventHandlerMap<T> = Arc<Mutex<HashMap<String, HandlerMap<T>>>>;
 
 /// An asynchronous `EventBus` to interact with.
+#[derive(Default)]
 pub struct EventBus<T> {
     event_handler_map: EventHandlerMap<T>,
 }
@@ -77,13 +78,13 @@ impl<T> EventBus<T> {
     /// create a new `EventBus`
     pub fn new() -> Self {
         Self {
-            event_handler_map: Arc::new(Mutex::new(HashMap::new())),
+            event_handler_map: Default::default(),
         }
     }
 }
 
 /// HandlerId is the key in `HandlerMap` hash map.
-#[derive(Eq, Hash, PartialEq, Clone, Debug)]
+#[derive(Eq, Hash, PartialEq, Clone, Debug, Default)]
 pub struct HandlerId {
     id: Uuid,
 }
