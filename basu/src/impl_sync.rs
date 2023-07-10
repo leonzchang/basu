@@ -1,4 +1,6 @@
 use crate::{error::BasuError, event::Event, Arc, EventBus, Handler, HandlerId, HashMap, Mutex};
+#[cfg_attr(docsrs, doc(cfg(feature = "sync")))]
+use rayon::prelude::*;
 
 /// Implement for event handler
 #[cfg_attr(docsrs, doc(cfg(feature = "sync")))]
@@ -7,7 +9,7 @@ pub trait Handle<T>: Send + Sync {
     fn handle(&self, event: &Event<T>) -> Result<(), BasuError>;
 }
 
-impl<T> EventBus<T> {
+impl<T: Sync> EventBus<T> {
     /// Subscribe to an event type.
     /// It takes the event type as a string and a handler implementing the `Handle<T>` trait.
     /// The method returns a `HandlerId` that uniquely identifies the handler within the event bus.
@@ -140,7 +142,7 @@ impl<T> EventBus<T> {
             Some(handler_map) => {
                 let handler_map = handler_map.lock().map_err(|_| BasuError::MutexPoisoned)?;
                 handler_map
-                    .iter()
+                    .par_iter()
                     .try_for_each(|(_id, h)| h.handle(event_data))?;
                 Ok(())
             }

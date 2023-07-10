@@ -21,6 +21,7 @@ doctest = false
 [dependencies]
 anyhow = { workspace = true }
 async-trait = { workspace = true, optional = true }
+rayon = { workspace = true, optional = true }
 futures = { workspace = true, optional = true }
 tokio = { workspace = true, optional = true }
 thiserror = { workspace = true }
@@ -28,5 +29,5 @@ uuid = { workspace = true }
 
 [features]
 default = ["async"]
-sync = []
+sync = ["rayon"]
 async = ["futures", "tokio", "async-trait"]
