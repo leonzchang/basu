@@ -31,4 +31,4 @@ async = ["futures", "tokio", "async-trait"]
 
 
 [package.metadata.docs.rs]
-all-features = true
+features = ["async"]
