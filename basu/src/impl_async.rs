@@ -4,7 +4,6 @@ use crate::{
 
 /// Implement for event handler
 #[async_trait]
-#[cfg_attr(docsrs, doc(cfg(feature = "async")))]
 pub trait Handle<T>: Send + Sync {
     /// Handle event which is published from `EventBus`
     async fn handle(&self, event: &Event<T>) -> Result<(), BasuError>;
@@ -37,7 +36,6 @@ impl<T> EventBus<T> {
     ///
     /// let handler_id = event_bus.subscribe("my_event", Box::new(handler)).await;
     /// ```
-    #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
     pub async fn subscribe(&self, event_type: &str, handler: Handler<T>) -> HandlerId {
         let mut event_handler_map = self.event_handler_map.lock().await;
 
@@ -86,7 +84,6 @@ impl<T> EventBus<T> {
     ///
     /// event_bus.unsubscribe("my_event", &handler_id).await?;
     /// ```
-    #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
     pub async fn unsubscribe(
         &self,
         event_type: &str,
@@ -133,7 +130,6 @@ impl<T> EventBus<T> {
     ///
     /// event_bus.publish("my_event", &event).await?;
     /// ```
-    #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
     pub async fn publish(&self, event_type: &str, event_data: &Event<T>) -> Result<(), BasuError> {
         let event_handler_map = self.event_handler_map.lock().await;
 
@@ -178,7 +174,6 @@ impl<T> EventBus<T> {
     ///     println!("Registered event type: {}", event_type);
     /// }
     ///```
-    #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
     pub async fn list(&self) -> Vec<String> {
         let event_handler_map = self.event_handler_map.lock().await;
 
@@ -199,7 +194,6 @@ impl<T> EventBus<T> {
     ///
     /// println!("Number of handlers for event '{}': {}", event_type, handler_count);
     /// ```
-    #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
     pub async fn get_handler_count(&self, event_type: &str) -> Result<usize, BasuError> {
         let event_handler_map = self.event_handler_map.lock().await;
 
@@ -241,7 +235,6 @@ impl<T> EventBus<T> {
     /// ```
     ///
     /// **Note:** The `clear` method removes all event handlers and makes the event bus empty.
-    #[cfg_attr(docsrs, doc(cfg(feature = "async")))]
     pub async fn clear(&self) {
         let mut event_handler_map = self.event_handler_map.lock().await;
 
