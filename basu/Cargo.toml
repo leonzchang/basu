@@ -10,10 +10,7 @@ keywords = { workspace = true }
 categories = { workspace = true }
 license = { workspace = true }
 readme = "../README.md"
-include = [
-    "src/**/*.rs",
-    "Cargo.toml",
-]
+include = ["src/**/*.rs", "Cargo.toml"]
 
 [lib]
 doctest = false
@@ -31,3 +28,7 @@ uuid = { workspace = true }
 default = ["async"]
 sync = ["rayon"]
 async = ["futures", "tokio", "async-trait"]
+
+
+[package.metadata.docs.rs]
+features = ["async"]
