@@ -3,7 +3,7 @@ members = ["basu"]
 
 [workspace.package]
 authors = ["Leonz Chang<bellerophon00530@gmail.com>"]
-version = "0.1.7"
+version = "0.1.8"
 edition = "2021"
 repository = "https://github.com/leonzchang/basu.git"
 documentation = "https://docs.rs/basu"
