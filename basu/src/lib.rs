@@ -6,13 +6,13 @@
 //! ### Features:
 //!
 //! - Support for both asynchronous and synchronous event handling. Choose the approach
-//!  that best fits your application's needs.
+//!   that best fits your application's needs.
 //!
 //! - Provides an abstraction for representing events, allowing you to define custom
-//!  event structures with payload data.
+//!   event structures with payload data.
 //!
 //! - Well-defined error types and error handling mechanisms for reliable event bus
-//!  operations.
+//!   operations.
 //!
 //! To enable the synchronous event handling capability, use the `sync` feature:
 //!
@@ -61,11 +61,11 @@ use std::{collections::HashMap, sync::Arc};
 
 use uuid::Uuid;
 
-/// Hanlder
+/// Handler
 pub type Handler<T> = Box<dyn Handle<T>>;
-/// Hanlder map with Id
+/// Handler map with Id
 pub type HandlerMap<T> = Arc<Mutex<HashMap<HandlerId, Handler<T>>>>;
-/// Event Hanlder map
+/// Event Handler map
 pub type EventHandlerMap<T> = Arc<Mutex<HashMap<String, HandlerMap<T>>>>;
 
 /// An asynchronous `EventBus` to interact with.
