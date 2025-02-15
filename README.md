@@ -1,6 +1,6 @@
 # Basu
 <p align="center">
-  <img src=".github/basu.png" alt="basu">
+  <img src="https://raw.githubusercontent.com/leonzchang/basu/refs/heads/main/assets/basu.png" alt="basu">
 </p>
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/leonzchang/basu/blob/main/LICENSE)
